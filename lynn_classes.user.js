@@ -1,16 +1,17 @@
 // ==UserScript==
-// @name		Lynn Classes
-// @description	This script removes all measures currently in place to keep you from easily accessing and saving various content on Professor Douglas Lynn's website.
-// @namespace	http://www.modelrockettier.com
-// @match	    http://www.cset.oit.edu/~lynnd/*
-// @version	    1.1
+// @name        Lynn Classes
+// @author      Tim Schlueter
+// @description This script removes all measures currently in place to keep you from easily accessing and saving various content on Professor Douglas Lynn's website.
+// @namespace   http://www.modelrockettier.com
+// @match       http://www.cset.oit.edu/~lynnd/*
+// @version     1.1
 // ==/UserScript==
 
 // in greasemonkey we're only concerned with the actual window and document, not the wrappers
 if ( typeof(unsafeWindow) != 'undefined' )
-	window = unsafeWindow;
+    window = unsafeWindow;
 if ( typeof(document.wrappedJSObject) != 'undefined' )
-	document = document.wrappedJSObject;
+    document = document.wrappedJSObject;
 
 // disable the onblur function (leaving the window, clicking on a different tab, etc.), which blanks the page content
 window.onblur = null;
@@ -24,13 +25,13 @@ document.onkeydown = null;
 
 // clear the window timeout, if one exists
 if ( typeof(window.timerID) != 'undefined' )
-	window.clearTimeout( window.timerID );
+    window.clearTimeout( window.timerID );
 
 // remove any message about the window timing out
 var span_tags = document.getElementsByTagName( "span" );
 if ( span_tags && span_tags[0] && span_tags[0].innerHTML ) {
-	if ( span_tags[0].innerHTML.replace(/[ \t\n]+/g," ").substr(0,24) == "This window will timeout" )
-		span_tags[0].innerHTML = "This window will no longer timeout.  You're welcome.<br><br>\n";
+    if ( span_tags[0].innerHTML.replace(/[ \t\n]+/g," ").substr(0,24) == "This window will timeout" )
+        span_tags[0].innerHTML = "This window will no longer timeout.  You're welcome.<br><br>\n";
 }
 
 // restore the printing text style
@@ -40,10 +41,10 @@ style.type = 'text/css';
 style.media = 'print';
 
 if ( style.styleSheet )
-	style.styleSheet.cssText = rules.nodeValue;
+    style.styleSheet.cssText = rules.nodeValue;
 else
-	style.appendChild( rules );
+    style.appendChild( rules );
 
 var head = document.getElementsByTagName( 'head' );
 if ( head[0] )
-	head[0].appendChild( style );
+    head[0].appendChild( style );
