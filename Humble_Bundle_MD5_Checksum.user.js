@@ -3,7 +3,7 @@
 // @author      Tim Schlueter
 // @namespace   http://www.modelrockettier.com
 // @description This script compiles all of the MD5 checksums from a Humble Bundle download page into a section that can be copied as a .md5 file to check all files of a certain variety against.
-// @include     https://www.humblebundle.com/downloads?*
+// @include     https://www.humblebundle.com/*?key=*
 // @version     1
 // ==/UserScript==
 
